@@ -1,0 +1,19 @@
+{
+    "cmake.configureOnOpen": true,
+    "python.testing.unittestArgs": [
+        "-v",
+        "-p",
+        "test_*.py",
+        "-s",
+        "."
+    ],
+    "python.testing.pytestEnabled": false,
+    "python.testing.unittestEnabled": true,
+    "python.testing.pytestArgs": [
+        "."
+    ],
+    "[python]": {
+        "editor.defaultFormatter": "ms-python.black-formatter"
+    },
+    "python.formatting.provider": "none"
+}
