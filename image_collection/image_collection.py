@@ -158,3 +158,13 @@ class RgbImageCollection(ImageCollection):
                 rgb16 = rgb16[crop_r[0] : crop_r[1], crop_c[0] : crop_c[1]]
             rgb_images.append((rgb16 / max_value).astype(np.float32))
         return cls(rgb_images)
+    
+    def write(self, dir: str, base_name: str):
+        """ Write out images as uncompressed PNG """
+        import os
+        for i, img in enumerate(self._images):
+            file_name = os.path.join(dir, base_name + '_' + '{0:03}'.format(i) + '.png')
+            i16 = (img*(2**16-1)).astype(np.uint16)
+            bgr = cv2.cvtColor(i16, cv2.COLOR_RGB2BGR)
+            cv2.imwrite(file_name, bgr, [cv2.IMWRITE_PNG_COMPRESSION, 0])
+
